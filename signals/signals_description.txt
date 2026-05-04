@@ -1,0 +1,10 @@
+gps_l1_ca_2msps.mat contains GPS L1 CA signal sampled in baseband at 2 MSPS
+
+Notice that the front-end used to capture the signal (USRP 1.0) have a very inaccurate LO, thus, it is present a parasitic IF in Doppler shifts. 
+Explore with an acquisition windows of +25 kHz to -25 kHz.
+
+Example:
+
+load('gps_l1_ca_2msps.mat')
+pcps_acquisition(rawSignal, 2e6, -10e3, 10e3, 250, 2.5, 1)
+
