@@ -211,3 +211,39 @@ freq_50_percent_long = shift_hz_long(idx_50_long);
 disp(' ***** Q8 *****');
 disp(['For Tsig = 5 ms, 50 percent Doppler correlation reduction at approximately ' num2str(freq_50_percent_long) ' Hz']);
 disp(['Theoretical value for Tsig = 5 ms is approximately ' num2str(0.603/Tsig_long) ' Hz']);
+
+
+chips_50_percent = 0.5;
+samples_50_percent = chips_50_percent * samples_per_chip;
+sequence_duration_ms = (num_chips / Rc_L1_CA) * 1e3;
+
+%% Summary of numerical results for the report
+
+fprintf('\n');
+fprintf('================ EXERCISE 3 RESULTS SUMMARY ================\n');
+
+fprintf('Number of chips in Tsig is %.0f chips\n', num_chips);
+fprintf('GPS L1 C/A complete sequence duration is %.4f ms\n', sequence_duration_ms);
+fprintf('Sampling frequency is %.4f MHz\n', Fs/1e6);
+fprintf('Number of samples is %.0f samples\n', Nsamples);
+fprintf('Samples per chip is %.4f samples/chip\n', samples_per_chip);
+
+fprintf('\n');
+fprintf('50 percent autocorrelation reduction is %.4f chips\n', chips_50_percent);
+fprintf('50 percent autocorrelation reduction is %.4f samples\n', samples_50_percent);
+
+fprintf('\n');
+fprintf('Estimated autocorrelation gain is %.4f dB\n', autocorr_gain_dB);
+fprintf('Estimated cross-correlation gain is %.4f dB\n', crosscorr_gain_dB);
+
+fprintf('\n');
+fprintf('50 percent Doppler correlation reduction for Tsig = %.1f ms is %.4f Hz\n', Tsig*1e3, freq_50_percent);
+fprintf('Recommended Doppler grid step for Tsig = %.1f ms is approximately %.4f Hz or lower\n', Tsig*1e3, freq_50_percent);
+
+fprintf('\n');
+fprintf('50 percent Doppler correlation reduction for Tsig = %.1f ms is %.4f Hz\n', Tsig_long*1e3, freq_50_percent_long);
+fprintf('Theoretical 50 percent Doppler reduction for Tsig = %.1f ms is %.4f Hz\n', Tsig_long*1e3, 0.603/Tsig_long);
+fprintf('Recommended Doppler grid step for Tsig = %.1f ms is approximately %.4f Hz or lower\n', Tsig_long*1e3, freq_50_percent_long);
+
+fprintf('=============================================================\n');
+fprintf('\n');
